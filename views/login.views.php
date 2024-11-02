@@ -1,0 +1,66 @@
+<?php require_once("inc/header.php"); ?>
+<?php require_once("inc/banner.php"); ?>
+
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Log In</p>
+                        <div class="my-5">
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- * * SB Forms Contact Form * *-->
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- This form is pre-integrated with SB Forms.-->
+                            <!-- To make this form functional, sign up at-->
+                            <!-- https://startbootstrap.com/solution/contact-forms-->
+                            <!-- to get an API token!-->
+                            <?php if(has_session('success')): ?>
+                            <div class="alert alert-success p-2">
+                                <?php echo flash_session('success'); ?>
+                            </div>
+                            <?php endif; ?>
+                            <?php if(has_session('errors')): ?>
+                            <?php foreach(flash_session('errors') as $error): ?>
+                            <div class="alert alert-danger p-2">
+                                 <?php echo $error ; ?>
+                            </div>
+                            <?php endforeach;?>
+                            <?php endif; ?>   
+                            <form action="<?php echo BASE_URL."index.php?page=login-action"; ?>"  method="POST" >
+                                <div class="form-floating">
+                                    <input class="form-control" name ="email" type="email" placeholder="Enter your email..." data-sb-validations="required,email" />
+                                    <label for="email">Email address</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" name ="password" type="tel" placeholder="Enter your phone number..." data-sb-validations="required" />
+                                    <label for="phone">password</label>
+                                </div>
+                                <br />
+                                <!-- Submit success message-->
+                                <!---->
+                                <!-- This is what your users will see when the form-->
+                                <!-- has successfully submitted-->
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Form submission successful!</div>
+                                        To activate this form, sign up at
+                                        <br />
+                                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    </div>
+                                </div>
+                                <!-- Submit error message-->
+                                <!---->
+                                <!-- This is what your users will see when there is-->
+                                <!-- an error submitting the form-->
+                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                                <!-- Submit Button-->
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+<?php require_once("inc/footer.php"); ?>
